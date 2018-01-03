@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+HOSTNAME="local.wp-test.com"
+DIR="wp-test"
+URL="http://#{HOSTNAME}"
+PHP="7.1"
+SITENAME="Local WP Test"
+ARGS = [HOSTNAME, DIR, URL, PHP, SITENAME]
+SCRIPTS = [
+  'install',
+  'nginx',
+  'wordpress',
+  'restart',
+]
+
+Vagrant.configure("2") do |config|
+  config.vm.define "wptest" do |v|
+    v.vm.box = "bento/ubuntu-16.04"
+
+    v.vm.network "private_network", ip: "192.168.12.34"
+    v.vm.synced_folder "../", "/var/www/#{DIR}",
+      owner: "vagrant", group: "www-data"
+    v.vm.hostname = HOSTNAME
+
+    for key in SCRIPTS
+      # wordpress.sh can't be run as root
+      privileged = key != 'wordpress'
+      v.vm.provision "shell" do |s| 
+        s.path = "provisioning/#{key}.sh"
+        s.args = ARGS
+        s.privileged = privileged
+      end
+    end
+    v.vm.provision "shell", privileged: false, inline: <<-EOF
+      echo "Server is LIVE at #{URL} !"
+    EOF
+  end
+end

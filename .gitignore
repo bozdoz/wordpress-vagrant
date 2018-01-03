@@ -1,0 +1,14 @@
+# ignore all wp-generated files
+*
+
+# except directories
+!*/
+
+!vagrant/*
+!vagrant/provisioning/*
+# ignore vagrant machines
+vagrant/.vagrant
+
+# stop ignoring yourself
+!.gitignore
+!package.json

@@ -1,0 +1,20 @@
+{
+  "name": "wordpress-test",
+  "version": "1.0.0",
+  "description": "A vagrant test environment for WordPress",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd ./vagrant && vagrant up",
+    "provision": "cd ./vagrant && vagrant provision",
+    "ssh": "cd ./vagrant && vagrant ssh",
+    "destroy": "cd ./vagrant && vagrant destroy -f",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "WordPress",
+    "Test",
+    "Vagrant"
+  ],
+  "author": "Benjamin J DeLong <howaboutben@gmail.com> (https://bozdoz.com)",
+  "license": "MIT"
+}
