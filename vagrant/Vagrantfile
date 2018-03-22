@@ -1,13 +1,15 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-HOSTNAME="local.wp-test.com"
-DIR="wp-test"
+dir=__dir__.split('/')
+dir.pop()
+DIR=dir.join('/')
+HOSTNAME="local.#{DIR}.com"
 URL="http://#{HOSTNAME}"
 PHP="7.1"
-SITENAME="Local WP Test"
-ARGS = [HOSTNAME, DIR, URL, PHP, SITENAME]
-SCRIPTS = [
+SITENAME=DIR
+ARGS=[HOSTNAME, DIR, URL, PHP, SITENAME]
+SCRIPTS=[
   'install',
   'nginx',
   'wordpress',
