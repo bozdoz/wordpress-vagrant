@@ -26,7 +26,7 @@ server {
     gzip_types text/plain text/css text/xml text/javascript application/x-javascript application/xml;
     gzip_disable "MSIE [1-6]\.";
 
-        location ~ /.well-known {
+    location ~ /.well-known {
         allow all;
     }
 
@@ -81,5 +81,6 @@ EOF
 sudo ln -sf /etc/nginx/sites-available/${DIR}.conf /etc/nginx/sites-enabled/
 
 # update php.ini to be compatible for some themes
-sudo sed -i "s@^upload_max_filesize = 2M@upload_max_filesize = 10M@" /etc/php/${PHP}/fpm/php.ini
-sudo sed -i "s@^post_max_size = 8M@post_max_size = 30M@" /etc/php/${PHP}/fpm/php.ini
+sudo sed -i "s@^upload_max_filesize = 2M@upload_max_filesize = 64M@" /etc/php/${PHP}/fpm/php.ini
+sudo sed -i "s@^post_max_size = 8M@post_max_size = 64M@" /etc/php/${PHP}/fpm/php.ini
+sudo sed -i "s@^max_execution_time = 30@max_execution_time = 180@" /etc/php/${PHP}/fpm/php.ini
