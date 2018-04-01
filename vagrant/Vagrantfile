@@ -2,11 +2,9 @@
 # vi: set ft=ruby :
 
 dir=__dir__.split('/')
-# remove current "vagrant" directory
-dir.pop()
 # DIR === parent directory name
-DIR=dir[-1]
-SITENAME=dir[-1]
+DIR=dir[-2]
+SITENAME=DIR
 HOSTNAME="local.#{SITENAME}.com"
 URL="http://#{HOSTNAME}"
 PHP="7.2"
