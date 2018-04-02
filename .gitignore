@@ -1,14 +1,19 @@
-# ignore all wp-generated files
-*
-
-# except directories
-!*/
-
-!vagrant/*
-!vagrant/provisioning/*
-# ignore vagrant machines
+node_modules/
 vagrant/.vagrant
+vagrant/*.log
 
-# stop ignoring yourself
-!.gitignore
-!package.json
+# ignore all wordpress-generated files
+wp-*
+!wp-content
+index.php
+license.txt
+readme.html
+xmlrpc.php
+LICENSE
+
+# except theme files
+wp-content/*
+!wp-content/themes
+wp-content/themes/*
+!wp-content/themes/your-theme-name
+wp-content/themes/your-theme-name/style.css

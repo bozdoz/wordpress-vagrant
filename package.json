@@ -1,10 +1,10 @@
 {
-  "name": "wordpress-test",
-  "version": "1.0.0",
+  "name": "wordpress-vagrant",
+  "version": "0.1.0",
   "description": "A vagrant test environment for WordPress",
-  "main": "index.js",
   "scripts": {
-    "start": "cd ./vagrant && vagrant up",
+    "start": "npm run up && gulp",
+    "up": "cd ./vagrant && vagrant up",
     "provision": "cd ./vagrant && vagrant provision",
     "ssh": "cd ./vagrant && vagrant ssh",
     "destroy": "cd ./vagrant && vagrant destroy -f",
@@ -16,5 +16,12 @@
     "Vagrant"
   ],
   "author": "Benjamin J DeLong <howaboutben@gmail.com> (https://bozdoz.com)",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.23.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^2.6.4"
+  }
 }
